@@ -1,4 +1,4 @@
-const { write } = require('fs')
+const  fs  = require('fs')
 const http = require('http')
 const path = require('path')
 
@@ -24,11 +24,11 @@ const server = http.createServer((request, response)=>{
 function getPage(response, pageFile){
     response.writeHead(200,{'content-type':'text/html'})
 
-    fstat.readFile(
+    fs.readFile(
         path.join(__dirname,'views',pageFile),
         function(err,data){
             if(err) throw err
-            response,write(data)
+            response.write(data)
             response.end()
 
         }
